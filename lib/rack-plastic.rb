@@ -34,7 +34,7 @@ module Rack
     def initialize(app, options = {}) #:nodoc:
       @app = app
       @options = options
-      @p = PlasticHelper.new
+      @p = ::Rack::PlasticHelper.new
     end
     
     # Rack::Plastic provides a call method so that your middleware doesn't
