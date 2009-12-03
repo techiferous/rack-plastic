@@ -1,0 +1,55 @@
+= Rack::Plastic
+
+== Description
+
+If you are creating Rack middleware that changes the HTML response, use
+Plastic to get a head start.  Plastic takes care of the
+boilerplate Rack glue so that you can focus on simply changing the HTML.
+
+== Usage
+
+There are two ways you can change the HTML: as a Nokogiri document or as
+a string.  Simply define one of the following methods:
+
+  def change_nokogiri_doc(doc)
+    ... insert code that changes the doc ...
+    doc
+  end
+
+  def change_html_string(html)
+    ... insert code that changes the html string ...
+    html
+  end
+
+If you define both methods, change_nokogiri_doc will be called first, then
+the doc will be converted to an HTML string, then the string will be
+passed to change_html_string.
+
+Rack::Plastic also provides some convenience methods for interacting with
+Rack and Nokogiri.
+
+== Examples
+
+The test/middlewares directory has examples of writing middleware using
+Plastic.
+
+== Testing
+
+This gem doesn't come with automated tests, but it provides manual tests.
+Each of the example middlewares is inserted into a Sinatra, Rails, and
+Rack test app.
+
+To run the Rails test app:
+* cd test/railsapp
+* script/server
+* point your browser to http://localhost:3000
+
+To run the Sinatra test app:
+* cd test/sinatraapp
+* ruby app.rb
+* point your browser to http://localhost:4567
+
+To run the Rack test app:
+* cd test/rackapp
+* rackup config.ru
+* point your browser to http://localhost:9292
