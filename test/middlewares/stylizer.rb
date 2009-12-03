@@ -1,5 +1,4 @@
 require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
-require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'plastic_helper')
 
 # This middleware demonstrates how to add inline CSS styles to the web page.
 #

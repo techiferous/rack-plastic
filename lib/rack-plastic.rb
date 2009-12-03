@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'plastic_helper'
 
 module Rack
 

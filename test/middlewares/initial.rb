@@ -1,5 +1,4 @@
 require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
-require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'plastic_helper')
 
 # This middleware emphasizes the first character in every paragraph, not unlike
 # the initials in illuminated manuscripts of the Middle Ages.

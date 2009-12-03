@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 module Rack
 
   # PlasticHelper was created to separate Plastic's implementation from Plastic's
