@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'plastic')
+require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
 require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'plastic_helper')
 
 # This middleware emphasizes the first character in every paragraph, not unlike
