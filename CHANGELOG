@@ -1,3 +1,6 @@
+0.1.0 (July 18, 2010)
+* Added convenience methods for testing middleware based on Rack::Plastic.
+
 0.0.3 (December 3, 2009)
 * BUGFIX: 'require' problem.
 
