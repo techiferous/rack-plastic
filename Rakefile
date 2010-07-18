@@ -13,7 +13,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-plastic"
-    s.version       = "0.1.0"
+    s.version       = "0.1.1"
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"
     s.summary       = "Helps you write Rack middleware using Nokogiri."

@@ -5,7 +5,7 @@ require 'colored'
 # Mix this module into Test::Unit::TestCase to have access to these
 # test helpers when using Test::Unit.
 #
-# Here's an example of how you can use these convenience methods:
+# Here's an example of how you can use these helper methods:
 #
 #   def test_basic_document
 #     before_html = %Q{
@@ -38,20 +38,37 @@ require 'colored'
 #     assert_html_equal expected_html, after_html
 #   end
 #
+# And here's an example of how you'd mix these helper methods into
+# Test::Unit::TestCase:
+#
+#   require 'test/unit'
+#   require 'rubygems'
+#   require 'plastic_test_helper'
+# 
+#   module Test
+#     module Unit
+#       class TestCase
+#     
+#         include PlasticTestHelper
+# 
+#       end
+#     end
+#   end
+#
 module PlasticTestHelper
 
   # This takes care of the "plumbing" involved in testing your middleware.
-  # All you have to provide is an HTML string, the class of
+  # All you have to provide is an input HTML string, the class of
   # your middleware (not the name of your class or an object, but
   # the class itself), and finally some optional options to use when
   # instantiating your middleware class.
   #
-  # This method will return the resulting HTML string (the body of the
-  # middleware's response).
+  # This method will run the input HTML string through the middleware
+  # and return the resulting HTML string (the body of the middleware's response).
   #
   # Examples:
-  #   resulting_html = process_html(html, Rack::Linkify)
-  #   resulting_html = process_html(html, Rack::Linkify, :twitter => true)
+  #   resulting_html = process_html(input_html, Rack::Linkify)
+  #   resulting_html = process_html(input_html, Rack::Linkify, :twitter => true)
   #
   def process_html(html, middleware_class, options={})
     app = lambda { |env| [200, {'Content-Type' => 'text/html'}, html] }
