@@ -3,7 +3,7 @@
 == Description
 
 If you are creating Rack middleware that changes the HTML response, use
-Plastic to get a head start.  Plastic takes care of the
+Rack::Plastic to get a head start.  Rack::Plastic takes care of the
 boilerplate Rack glue so that you can focus on simply changing the HTML.
 
 == Usage
@@ -26,18 +26,22 @@ the doc will be converted to an HTML string, then the string will be
 passed to change_html_string.
 
 Rack::Plastic also provides some convenience methods for interacting with
-Rack and Nokogiri.
+Rack and Nokogiri as well as some convenience methods for testing.
 
 == Examples
 
 The test/middlewares directory has examples of writing middleware using
-Plastic.
+Rack::Plastic.
 
 == Testing
 
-This gem doesn't come with automated tests, but it provides manual tests.
-Each of the example middlewares is inserted into a Sinatra, Rails, and
-Rack test app.
+Rack::Plastic comes with some test helpers that make it easier for you to
+write tests for your Rack middleware.  Refer to the documentation for
+PlasticTestHelper for more details.
+
+If you want to test Rack::Plastic itself, this gem doesn't come with automated tests,
+but it provides manual tests.  Each of the example middlewares is inserted into a
+Sinatra, Rails, and Rack test app.
 
 To run the Rails test app:
 * cd test/railsapp

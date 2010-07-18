@@ -5,6 +5,39 @@ require 'colored'
 # Mix this module into Test::Unit::TestCase to have access to these
 # test helpers when using Test::Unit.
 #
+# Here's an example of how you can use these convenience methods:
+#
+#   def test_basic_document
+#     before_html = %Q{
+#       <!DOCTYPE html
+#       PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+#       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+#       <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+#         <head>
+#           <title>Testing Rack::SexChange</title>
+#         </head>
+#         <body>
+#           Hi, Mom!
+#         </body>
+#       </html>
+#     }
+#     expected_html = %Q{
+#       <!DOCTYPE html
+#       PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+#       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+#       <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+#         <head>
+#           <title>Testing Rack::SexChange</title>
+#         </head>
+#         <body>
+#           Hi, Dad!
+#         </body>
+#       </html>
+#     }
+#     after_html = process_html(before_html, Rack::SexChange)
+#     assert_html_equal expected_html, after_html
+#   end
+#
 module PlasticTestHelper
 
   # This takes care of the "plumbing" involved in testing your middleware.
@@ -17,8 +50,8 @@ module PlasticTestHelper
   # middleware's response).
   #
   # Examples:
-  #   process_html(html, Rack::Linkify)
-  #   process_html(html, Rack::Linkify, :twitter => true)
+  #   resulting_html = process_html(html, Rack::Linkify)
+  #   resulting_html = process_html(html, Rack::Linkify, :twitter => true)
   #
   def process_html(html, middleware_class, options={})
     app = lambda { |env| [200, {'Content-Type' => 'text/html'}, html] }
@@ -26,7 +59,7 @@ module PlasticTestHelper
     Rack::MockRequest.new(app2).get('/', :lint => true).body
   end
 
-  # this convenience method makes it easy to test changes to HTML strings.
+  # this convenience method makes it easy to test changes to HTML strings
   #
   def assert_html_equal(expected_html_string, actual_html_string)
     # Nokogiri does not preserve the same whitespace between tags when
