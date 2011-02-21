@@ -30,7 +30,7 @@ Rack and Nokogiri as well as some convenience methods for testing.
 
 == Examples
 
-The test/middlewares directory has examples of writing middleware using
+The examples/middlewares directory has examples of writing middleware using
 Rack::Plastic.
 
 == Testing
@@ -44,16 +44,16 @@ but it provides manual tests.  Each of the example middlewares is inserted into 
 Sinatra, Rails, and Rack test app.
 
 To run the Rails test app:
-* cd test/railsapp
+* cd examples/railsapp
 * script/server
 * point your browser to http://localhost:3000
 
 To run the Sinatra test app:
-* cd test/sinatraapp
+* cd examples/sinatraapp
 * ruby app.rb
 * point your browser to http://localhost:4567
 
 To run the Rack test app:
-* cd test/rackapp
+* cd examples/rackapp
 * rackup config.ru
 * point your browser to http://localhost:9292
