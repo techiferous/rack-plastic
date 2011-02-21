@@ -7,17 +7,17 @@ module Rack
   # time you wanted to write a new middleware that modifies the HTML response.
   #
   class PlasticHelper #:nodoc:
-    
+
     def request
       @request
     end
-    
+
     def options
       @options
     end
 
     private
-    
+
     def handle_request(env, app, options, plastic)
       @app = app
       @options = options
@@ -45,17 +45,15 @@ module Rack
       end
       [status, @headers, @body]
     end
-    
+
     def html?
       @headers["Content-Type"] && @headers["Content-Type"].include?("text/html")
     end
 
     def body_to_string
-      s = ""
-      @body.each { |x| s << x }
-      s
+      @body.to_s
     end
-    
+
     def update_response_body(new_body_string)
       # If we're dealing with a Rails response, we don't want to throw the
       # response object away, we just want to update the response string.
@@ -74,6 +72,6 @@ module Rack
       end
       @headers['Content-Length'] = length.to_s
     end
-    
+
   end
 end
