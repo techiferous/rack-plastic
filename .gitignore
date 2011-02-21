@@ -1,2 +1,3 @@
 .DS_Store
-test/railsapp/log/*.log
+Gemfile.lock
+examples/railsapp/log/*.log
