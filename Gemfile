@@ -1,3 +1,4 @@
+source :rubygems
 gem 'rack', '>= 1.0.0'
 gem 'nokogiri', '>= 1.4.0'
 
