@@ -1,4 +1,5 @@
 require 'rake'
+require 'rake/testtask'
 require 'rake/rdoctask'
 
 desc 'Generate documentation for Plastic.'
@@ -7,6 +8,16 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.title = 'Rack::Plastic'
   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+desc 'Default: run unit tests.'
+task :default => :test
+
+desc 'Test Rack::Plastic'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
 end
 
 begin
@@ -24,7 +35,7 @@ begin
     }
     s.add_dependency('rack', '>= 1.0.0')
     s.add_dependency('nokogiri', '>= 1.4.0')
-    s.add_development_dependency('dirb')
+    s.add_development_dependency('dirb', '2.0.0')
     s.add_development_dependency('colored')
     s.require_path  = "lib"
     s.files         = []
