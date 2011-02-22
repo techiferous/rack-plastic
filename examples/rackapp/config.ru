@@ -1,4 +1,4 @@
-require 'app'
+require File.join(File.dirname(__FILE__), 'app')
 require File.join(File.dirname(__FILE__), '..', 'middlewares', 'initial')
 require File.join(File.dirname(__FILE__), '..', 'middlewares', 'intro')
 require File.join(File.dirname(__FILE__), '..', 'middlewares', 'l337')
