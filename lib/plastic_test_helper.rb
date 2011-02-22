@@ -71,7 +71,7 @@ module PlasticTestHelper
   #   resulting_html = process_html(input_html, Rack::Linkify, :twitter => true)
   #
   def process_html(html, middleware_class, options={})
-    app = lambda { |env| [200, {'Content-Type' => 'text/html'}, html] }
+    app = lambda { |env| [200, {'Content-Type' => 'text/html'}, [html]] }
     app2 = middleware_class.new(app, options)
     Rack::MockRequest.new(app2).get('/', :lint => true).body
   end
