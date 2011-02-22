@@ -51,7 +51,9 @@ module Rack
     end
 
     def body_to_string
-      @body.to_s
+      s = ""
+      @body.each { |x| s << x }
+      s
     end
 
     def update_response_body(new_body_string)
