@@ -2,7 +2,7 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-desc 'Generate documentation for Plastic.'
+desc 'Generate documentation for Rack::Plastic.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = 'Rack::Plastic'
@@ -24,7 +24,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-plastic"
-    s.version       = "0.1.1"
+    s.version       = "0.1.2"
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"
     s.summary       = "Helps you write Rack middleware using Nokogiri."

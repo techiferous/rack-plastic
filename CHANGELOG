@@ -1,3 +1,10 @@
+0.1.2 (February 21, 2011)
+* BUGFIX: process_html test helper was not working in Ruby 1.9.
+* Moved test apps into the examples directory.
+* Added a basic automated test.
+* Added bundler support.
+* Small tweaks such as require paths, gitignore updates, etc.
+
 0.1.1 (July 18, 2010)
 * Tweaked documentation but did not change code.
 
