@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'plastic_helper'
+require File.join(File.dirname(__FILE__), 'plastic_helper')
 
 module Rack
 
