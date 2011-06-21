@@ -1,3 +1,30 @@
+class NokogiriString
+  attr :nokogiri
+  
+  def initialize(nokogiri)
+    @nokogiri = nokogiri
+  end
+  
+  # A NokogiriString is not really a String, but is good enought 
+  # in the Rack context to act like one. 
+  def kind_of?(what)
+    return true if what == String
+    super
+  end
+  
+  def to_str
+    @to_str ||= @nokogiri.to_s
+  end
+  
+  def bytesize
+    to_str.bytesize
+  end
+  
+  def to_s
+    to_str
+  end
+end
+
 module Rack
 
   # PlasticHelper was created to separate Plastic's implementation from Plastic's
@@ -8,36 +35,17 @@ module Rack
   #
   module PlasticHelper #:nodoc:
 
-    module WithNokogiriDoc
-      def nokogiri_doc=(doc)
-        @nokogiri_doc = doc
-      end
-      
-      def nokogiri_doc
-        @nokogiri_doc
-      end
-    end
-
-    # Rack::Plastic provides a call method so that your middleware doesn't
-    # have to.
-    #
+    # Rack::Plastic provides a call method so that your middleware doesn't have to.
     def call(env)
       status, @headers, @body = @app.call(env)
-      if html?
+      if status == 200 && html?
         @request = Rack::Request.new(env)
-        new_body_string = @body.length == 1 ? @body[0] : @body.join("")
+        body_string = @body.length == 1 ? @body[0] : @body.join("")
 
-        doc = if new_body_string.is_a?(WithNokogiriDoc)
-          new_body_string.nokogiri_doc
-        else
-          Nokogiri::HTML(new_body_string)
-        end
+        doc = body_string.respond_to?(:nokogiri) ? body_string.nokogiri : Nokogiri::HTML(body_string)
         
-        if update_body(doc) != false
-          str = doc.to_s
-          str.extend WithNokogiriDoc
-          str.nokogiri_doc = doc
-          update_response_body(str)
+        if doc && update_body(doc) != false
+          update_response_body(NokogiriString.new(doc))
         end
       end
 
@@ -50,17 +58,19 @@ module Rack
       @headers["Content-Type"].to_s.include?("text/html")
     end
 
-    def update_response_body(new_body_string)
+    def update_response_body(body)
       # If we're dealing with a Rails response, we don't want to throw the
       # response object away, we just want to update the response string.
       if @body.class.name == "ActionController::Response"
-        @body.body = new_body_string
+        @body.body = body
       else
-        @body = [new_body_string]
+        @body = [body]
       end
 
-      # we use Rack::Utils.bytesize to avoid incompatibilities between Ruby 1.8 and 1.9
-      @headers.update 'Content-Length' => Rack::Utils.bytesize(new_body_string).to_s
+      #
+      # The content lenght might have changed... but there is Rack::ContentLength to add
+      # it later on again.
+      @headers.delete 'Content-Length'
     end
   end
 end
