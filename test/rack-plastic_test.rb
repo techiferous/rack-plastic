@@ -3,7 +3,7 @@ require "test_helper"
 
 module Rack
   class TestMiddleware < Plastic
-    def change_nokogiri_doc(doc)
+    def update_body(doc)
       h1 = create_node(doc, "h1", "Inserted a heading!")
       add_first_child(doc.at_css("body"), h1)
       doc

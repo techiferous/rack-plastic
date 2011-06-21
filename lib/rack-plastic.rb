@@ -10,20 +10,11 @@ module Rack
   # There are two ways you can change the HTML: as a Nokogiri document or as
   # a string.  Simply define one of the following methods:
   #
-  #   def change_nokogiri_doc(doc)
+  #   def update_body(doc)
   #     ... insert code that changes the doc ...
   #     doc
   #   end
   # 
-  #   def change_html_string(html)
-  #     ... insert code that changes the html string ...
-  #     html
-  #   end
-  #
-  # If you define both methods, change_nokogiri_doc will be called first, then
-  # the doc will be converted to an HTML string, then the string will be
-  # passed to change_html_string.
-  #
   # Rack::Plastic also provides some convenience methods for interacting with
   # Rack and Nokogiri.
   #

@@ -5,7 +5,7 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
 module Rack
   class L337 < Plastic
  
-    def change_nokogiri_doc(doc)
+    def update_body(doc)
       doc.css("p").each do |p|
         p.traverse do |node|
           if node.text?
@@ -15,7 +15,6 @@ module Rack
           end
         end
       end
-      doc
     end
     
   end

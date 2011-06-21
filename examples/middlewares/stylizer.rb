@@ -5,11 +5,10 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
 module Rack
   class Stylizer < Plastic
  
-    def change_nokogiri_doc(doc)
+    def update_body(doc)
       doc.at_css("body")["style"] = "font-family: Georgia, serif; font-style: italic;"
       doc.at_css("div#container")["style"] =
        "margin-left:auto;margin-right:auto;width:500px;position:relative"
-      doc
     end
     
   end

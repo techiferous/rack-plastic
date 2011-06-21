@@ -6,7 +6,7 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-plastic')
 module Rack
   class Initial < Plastic
  
-    def change_nokogiri_doc(doc)
+    def update_body(doc)
       doc.css("p").each do |p|
         p.traverse do |node|
           if node.text?
@@ -14,21 +14,14 @@ module Rack
               initial_whitespace = $1
               initial_character = $2
               rest_of_text = $3
-              update_text(node, initial_whitespace + "openingspantag" + initial_character + 
-               "closingspantag" + rest_of_text)
+              text = initial_whitespace + '<span style="font-size: 150%; font-weight: bold;">' + initial_character + 
+               '</span>' + rest_of_text
+              node.replace text
             end
             break
           end
         end
       end
-      doc
     end
-    
-    def change_html_string(html)
-      html.gsub!(/openingspantag/, '<span style="font-size: 150%; font-weight: bold;">')
-      html.gsub!(/closingspantag/, '</span>')
-      html
-    end
-    
   end
 end
