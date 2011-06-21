@@ -28,21 +28,14 @@ module Rack
   # Rack and Nokogiri.
   #
   class Plastic
- 
+    include PlasticHelper
+
     # Rack::Plastic provides an initialize method so that your middleware
     # doesn't have to.
     #
     def initialize(app, options = {}) #:nodoc:
       @app = app
-      @options = options
-      @p = ::Rack::PlasticHelper.new
-    end
-    
-    # Rack::Plastic provides a call method so that your middleware doesn't
-    # have to.
-    #
-    def call(env) #:nodoc:
-      @p.send(:handle_request, env, @app, @options, self)
+      @options = options.freeze
     end
     
     private
@@ -50,13 +43,13 @@ module Rack
     # returns the current request as a Rack::Request object
     #
     def request #:doc:
-      @p.request
+      @request
     end
     
     # returns the hash of options that were given to your middleware
     #
     def options #:doc:
-      @p.options
+      @options
     end
 
     # a convenience method for adding a new HTML element as the first child
