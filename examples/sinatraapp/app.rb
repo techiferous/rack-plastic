@@ -9,10 +9,12 @@ require File.join(File.dirname(__FILE__), '..', 'middlewares', 'stylizer')
 # In other words, Rack::Stylizer parses the resulting HTML first, then
 # passes it to Rack::Initial, then to Rack::L337, and finally to Rack::Intro.
 
-use Rack::Intro
-use Rack::L337
-use Rack::Initial
-use Rack::Stylizer
+1.times do
+  use Rack::Intro
+  use Rack::L337
+  use Rack::Initial
+  use Rack::Stylizer
+end
 
 get '/' do
   %Q{
