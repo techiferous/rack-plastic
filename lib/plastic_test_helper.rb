@@ -1,5 +1,5 @@
 require 'rack/mock'
-require 'dirb'
+require 'diffy'
 require 'colored'
 
 # Mix this module into Test::Unit::TestCase to have access to these
@@ -92,7 +92,7 @@ module PlasticTestHelper
     preamble << "* The differences are highlighted below.            *\n"
     preamble << "*****************************************************\n"
     message = preamble.magenta
-    message << Dirb::Diff.new(expected, actual).to_s(:color)
+    message << Diffy::Diff.new(expected, actual).to_s(:color)
     assert_block(message) { expected == actual }
   end
       

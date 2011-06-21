@@ -7,7 +7,7 @@ group :development do
 end
 
 group :test do
-  gem 'dirb', '2.0.0'
+  gem 'diffy', '2.0.2'
   gem 'colored'
 end
 
