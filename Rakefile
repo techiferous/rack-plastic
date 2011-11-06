@@ -24,7 +24,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-plastic"
-    s.version       = "0.1.2"
+    s.version       = "0.1.3"
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"
     s.summary       = "Helps you write Rack middleware using Nokogiri."
@@ -33,10 +33,7 @@ begin
       Rack::Plastic to get a head start.  Rack::Plastic takes care of the
       boilerplate Rack glue so that you can focus on simply changing the HTML.
     }
-    s.add_dependency('rack', '>= 1.0.0')
-    s.add_dependency('nokogiri', '>= 1.4.0')
-    s.add_development_dependency('diffy', '2.0.4')
-    s.add_development_dependency('colored')
+    # As of Jeweler 1.? (documented in 1.6.0), dependencies handled in Gemfile
     s.require_path  = "lib"
     s.files         = []
     s.files         << "README.rdoc"
