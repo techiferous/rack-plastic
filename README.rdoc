@@ -33,6 +33,12 @@ Rack and Nokogiri as well as some convenience methods for testing.
 The examples/middlewares directory has examples of writing middleware using
 Rack::Plastic.
 
+== Rails Streaming
+
+This middleware is not compatible with Rails HTTP streaming.  According to [Railscast #266](http://asciicasts.com/episodes/266-http-streaming):
+"Also, streaming is incompatible with some middleware. If the middleware modifies the response
+then it will not work with streaming."
+
 == Testing
 
 Rack::Plastic comes with some test helpers that make it easier for you to
