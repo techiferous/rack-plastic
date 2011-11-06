@@ -78,7 +78,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_runtime_dependency(%q<rack>, [">= 1.0.0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 1.4.0"])
-      s.add_development_dependency(%q<dirb>, ["= 2.0.0"])
+      s.add_development_dependency(%q<diffy>, ["= 2.0.4"])
       s.add_development_dependency(%q<colored>, [">= 0"])
     else
       s.add_dependency(%q<rack>, [">= 1.0.0"])
@@ -87,7 +87,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<rack>, [">= 1.0.0"])
       s.add_dependency(%q<nokogiri>, [">= 1.4.0"])
-      s.add_dependency(%q<dirb>, ["= 2.0.0"])
+      s.add_dependency(%q<diffy>, ["= 2.0.4"])
       s.add_dependency(%q<colored>, [">= 0"])
     end
   else
@@ -97,7 +97,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<rack>, [">= 1.0.0"])
     s.add_dependency(%q<nokogiri>, [">= 1.4.0"])
-    s.add_dependency(%q<dirb>, ["= 2.0.0"])
+    s.add_dependency(%q<diffy>, ["= 2.0.4"])
     s.add_dependency(%q<colored>, [">= 0"])
   end
 end
