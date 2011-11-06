@@ -14,12 +14,11 @@ Gem::Specification.new do |s|
   s.email = "techiferous@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     "CHANGELOG",
     "LICENSE",
-    "README.rdoc",
     "Rakefile",
     "lib/plastic_helper.rb",
     "lib/plastic_test_helper.rb",
